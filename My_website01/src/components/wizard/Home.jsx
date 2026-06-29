@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Img2BG from '../../assets/img2BG.jpg';
+import Img2BG from '../../assets/Img2BG.jpg';
 import Footer from './Footer';
 
 export default function Home() {

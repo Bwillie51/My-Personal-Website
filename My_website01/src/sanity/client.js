@@ -24,6 +24,7 @@ export const client = createClient({
 });
 */}
 // src/sanity/client.js
+{/*}
 import { createClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
 
@@ -39,4 +40,16 @@ const builder = imageUrlBuilder(client);
 export function urlFor(source) {
   return builder.image(source);
 }
+*/}
+
+// src/sanity/client.js
+import { createClient } from '@sanity/client';
+
+export const client = createClient({
+  projectId: import.meta.env.VITE_SANITY_PROJECT_ID || 'your_actual_project_id', 
+  dataset: 'production',
+  useCdn: false, // Set to false to bypass CDN cache layers and pull live token updates instantly
+  token: import.meta.env.VITE_SANITY_TOKEN || '', 
+  apiVersion: '2026-06-29', 
+});
 

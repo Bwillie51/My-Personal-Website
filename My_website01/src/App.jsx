@@ -26,17 +26,22 @@ export default function App() {
     }`;
 
     client.fetch(query)
-      .then((data) => {
-        if (data) {
-          setIdentity({
-            fullName: data.settings?.fullName || 'Brian Willie',
-            avatarUrl: data.settings?.avatarUrl || '',
-            resumeUrl: data.settings?.resumeUrl || '#',
-            videoUrl: data.videoDoc?.videoUrl || '' // 🚀 Unwraps the exact string path directly
-          });
-        }
-        setLoading(false);
-      })
+  .then((data) => {
+    if (data) {
+      // Unpacks the zero-index element of the returned settings and video arrays safely 🚀
+      const activeSettings = data.settings?.[0] || {};
+      const activeVideo = data.videoDoc?.[0] || {};
+
+      setIdentity({
+        fullName: activeSettings.fullName || 'Brian Willie',
+        avatarUrl: activeSettings.avatarUrl || '',
+        resumeUrl: activeSettings.resumeUrl || '#',
+        videoUrl: activeVideo.videoUrl || ''
+      });
+    }
+    setLoading(false);
+  })
+
       .catch((err) => {
         console.error("Core identity cluster fetch failure:", err);
         setLoading(false);

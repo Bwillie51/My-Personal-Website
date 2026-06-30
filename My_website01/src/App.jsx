@@ -11,8 +11,8 @@ export default function App() {
   const [identity, setIdentity] = useState({ fullName: '', avatarUrl: '', resumeUrl: '' });
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // Keeps the document array unwrapping directly at the GROQ database query layer
+      useEffect(() => {
+    // Moved the index [0] directly onto the filter rules for precise extraction 🚀
     const query = `{
       "settings": *[_type == "settings"][0] {
         fullName,
@@ -28,21 +28,27 @@ export default function App() {
     client.fetch(query)
       .then((data) => {
         if (data) {
-          // FIXED: Reads data directly as single objects instead of trying to map indices again 🚀
+          // Unpacks the zero-index element of the returned settings and video arrays safely 🚀
+          const activeSettings = data.settings?.[0] || {};
+          const activeVideo = data.videoDoc?.[0] || {};
+
           setIdentity({
-            fullName: data.settings?.fullName || 'Brian Willie',
-            avatarUrl: data.settings?.avatarUrl || '',
-            resumeUrl: data.settings?.resumeUrl || '#',
-            videoUrl: data.videoDoc?.videoUrl || ''
+            fullName: activeSettings.fullName || 'Brian Willie',
+            avatarUrl: activeSettings.avatarUrl || '',
+            resumeUrl: activeSettings.resumeUrl || '#',
+            videoUrl: activeVideo.videoUrl || ''
           });
         }
         setLoading(false);
       })
+
       .catch((err) => {
         console.error("Core identity cluster fetch failure:", err);
         setLoading(false);
       });
   }, []);
+
+
 
   if (loading) {
     return (
@@ -55,14 +61,14 @@ export default function App() {
   return (
     <BrowserRouter>
       {/* Header receives the shared name and portrait image instantly */}
-      
+      <Header identity={identity} />
 
       {/* Deep Midnight Canvas Base */}
       <main className="bg-[#0F0C1B] min-h-screen text-[#E2E8F0] antialiased overflow-x-hidden">
         <Routes>
           <Route path="/" element={<Home />} />
           {/* Profile receives the identity and the resume URL for downloads */}
-          
+          <Route path="/profile" element={<Profile identity={identity} />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>

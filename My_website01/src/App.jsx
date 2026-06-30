@@ -12,7 +12,7 @@ export default function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetches profile settings and home video overview documents directly as objects
+    // Keeps the document array unwrapping directly at the GROQ database query layer
     const query = `{
       "settings": *[_type == "settings"][0] {
         fullName,
@@ -28,7 +28,7 @@ export default function App() {
     client.fetch(query)
       .then((data) => {
         if (data) {
-          // Access fields directly because the [0] index in the query already unpacked them 🚀
+          // FIXED: Reads data directly as single objects instead of trying to map indices again 🚀
           setIdentity({
             fullName: data.settings?.fullName || 'Brian Willie',
             avatarUrl: data.settings?.avatarUrl || '',

@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { client } from '../../sanity/client'; 
 import Footer from './Footer';
-import { urlFor } from '../../sanity/client';
+//import { urlFor } from '../../sanity/client';
 
 export default function Profile({ identity }) {
   const [dynamicContent, setDynamicContent] = useState({ experiences: [], skillCategories: [], projects: [] });

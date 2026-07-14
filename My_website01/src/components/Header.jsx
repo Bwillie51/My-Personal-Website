@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import ProPic from '../assets/Bwaiyon.jpeg';
 
 export default function Header({ identity }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,6 +17,7 @@ export default function Header({ identity }) {
         
         {/* Dynamic Logo Image Container & Profile Identifier Link */}
         <div className="flex items-center gap-3">
+          {/* }
           <div className="flex items-center justify-center border border-[#4C1D95] rounded-full p-0.5 shadow-[0_0_10px_rgba(139,92,246,0.3)] w-9 h-9 overflow-hidden bg-[#120E24]">
             {identity?.avatarUrl ? (
               <img src={identity.avatarUrl} alt={`${identity.fullName || 'User'} avatar`} className="w-full h-full object-cover" />
@@ -25,6 +27,13 @@ export default function Header({ identity }) {
           </div>
           <Link to="/" className="text-base font-bold tracking-wide text-white hover:text-[#A78BFA] transition-colors duration-200">
             {identity?.fullName || "Brian WILLIE"}
+          </Link>
+          */}
+          <Link to="/" className="flex items-center gap-2">
+            <img src={ProPic} alt="Brian Willie" className="w-9 h-9 rounded-full border border-[#4C1D95] shadow-[0_0_10px_rgba(139,92,246,0.3)]" />
+            <span className="text-base font-bold tracking-wide text-white hover:text-[#A78BFA] transition-colors duration-200">
+              {identity?.fullName || "Brian WILLIE"}
+            </span>
           </Link>
         </div>
 

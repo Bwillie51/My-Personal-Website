@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { client } from '../../sanity/client'; 
 import Footer from './Footer';
+import ProPic from '../../assets/Bwaiyon.jpeg';
 //import { urlFor } from '../../sanity/client';
 
 export default function Profile({ identity }) {
@@ -69,9 +70,11 @@ export default function Profile({ identity }) {
         {/* LEFT COLUMN */}
         <div className="space-y-6 lg:col-span-1">
           
-          {/* Dynamic Profile ID Widget Box */}
+          {/* Dynamic Profile ID Widget Box 
           <div className="bg-[#1D153A] p-6 rounded-lg border border-[#31255C] hover:border-[#C084FC] hover:shadow-[0_0_25px_rgba(168,85,247,0.35)] transition-all duration-300 shadow-sm flex flex-col items-center text-center">
             <div className="w-32 h-40 rounded-lg overflow-hidden border-2 border-[#31255C] shadow-inner mb-4 relative group-hover:border-[#C084FC] transition-colors duration-300 bg-[#120E24] flex items-center justify-center">
+
+
                 {identity?.avatarUrl ? (
                   <img src={identity.avatarUrl} alt={`${identity.fullName || "User"} avatar`} className="w-full h-full object-cover" />
                 ) : (
@@ -79,6 +82,15 @@ export default function Profile({ identity }) {
                 )}
               </div>
               <h3 className="text-lg font-bold text-white mb-0.5">{identity?.fullName || "Brian Willie"}</h3>
+            <p className="text-xs font-semibold text-[#A78BFA] uppercase tracking-wider">Full-Stack Software Engineer</p>
+          </div>
+          */}
+          {/* Not fetched Dynamically - Static overview of the profile identity */}
+          <div className="bg-[#1D153A] p-6 rounded-lg border border-[#31255C] hover:border-[#C084FC] hover:shadow-[0_0_25px_rgba(168,85,247,0.35)] transition-all duration-300 shadow-sm flex flex-col items-center text-center">
+            <div className="w-32 h-40 rounded-lg overflow-hidden border-2 border-[#31255C] shadow-inner mb-4 relative group-hover:border-[#C084FC] transition-colors duration-300 bg-[#120E24] flex items-center justify-center">
+              <img src={ProPic} alt="Brian Willie avatar" className="w-full h-full object-cover" />
+            </div>
+            <h3 className="text-lg font-bold text-white mb-0.5">Brian Willie</h3>
             <p className="text-xs font-semibold text-[#A78BFA] uppercase tracking-wider">Full-Stack Software Engineer</p>
           </div>
 

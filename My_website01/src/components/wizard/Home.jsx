@@ -25,7 +25,7 @@ export default function Home() {
               Full-Stack Developer specializing in building scalable, secure, and user-centric web applications.
             </p>
             <Link to="/profile" className="inline-block bg-[#6D28D9] hover:bg-[#7C3AED] text-white px-5 py-2.5 rounded-md font-semibold text-sm shadow-[0_0_15px_rgba(109,40,217,0.4)] transition duration-300">
-              Explore Profile
+              Explore My Profile
             </Link>
           </div>
         </div>

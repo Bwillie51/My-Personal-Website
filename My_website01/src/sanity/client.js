@@ -46,7 +46,7 @@ export function urlFor(source) {
 import { createClient } from '@sanity/client';
 
 export const client = createClient({
-  projectId: import.meta.env.VITE_SANITY_PROJECT_ID || 'your_actual_project_id', 
+  projectId: import.meta.env.VITE_SANITY_PROJECT_ID || 'yne0by0k', 
   dataset: 'production',
   useCdn: false, // Set to false to bypass CDN cache layers and pull live token updates instantly
   token: import.meta.env.VITE_SANITY_TOKEN || '', 

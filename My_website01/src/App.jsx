@@ -1,3 +1,4 @@
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { client } from './sanity/client'; 
@@ -75,3 +76,4 @@ export default function App() {
     </BrowserRouter>
   );
 }
+

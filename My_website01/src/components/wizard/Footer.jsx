@@ -32,9 +32,9 @@ export default function Footer() {
         {/* Right Side: Links & Copyright */}
         <div className="flex flex-col items-center md:items-end gap-2">
           <div className="flex gap-4 text-xs font-semibold text-[#C084FC]">
-            <a href="https://www.linkedin.com/in/brian-willie-8b4499206" target="_blank" rel="noreferrer" className="hover:underline">LinkedIn ↗</a>
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:underline">GitHub ↗</a>
-            <a href="mailto:your.email@example.com" className="hover:underline">Email ↗</a>
+            <a href="#" target="_blank" rel="noreferrer" className="hover:underline">LinkedIn ↗</a>
+            <a href="#" target="_blank" rel="noreferrer" className="hover:underline">GitHub ↗</a>
+            <a href="#" className="hover:underline">Email ↗</a>
           </div>
         </div>
 

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Img2BG from '../../assets/Img2BG.jpg';
+import testVideo from '../../assets/testVideo.mp4';
 import Footer from './Footer';
 
 export default function Home() {
@@ -25,7 +26,7 @@ export default function Home() {
               Full-Stack Developer specializing in building scalable, secure, and user-centric web applications.
             </p>
             <Link to="/profile" className="inline-block bg-[#6D28D9] hover:bg-[#7C3AED] text-white px-5 py-2.5 rounded-md font-semibold text-sm shadow-[0_0_15px_rgba(109,40,217,0.4)] transition duration-300">
-              Explore My Profile
+              Explore Profile
             </Link>
           </div>
         </div>
@@ -98,12 +99,18 @@ export default function Home() {
             <div className="relative bg-[#0F0C1B]/90 rounded-2xl p-1.5 backdrop-blur-md shadow-2xl border border-white/5">
               <div className="rounded-[10px] overflow-hidden aspect-video bg-black shadow-inner relative">
                 <video 
+                 controls className="w-full h-full object-cover relative z-10">
+                 <source src ={testVideo} type="video/mp4" />  
+                </video>
+                {/*
                   src="https://w3schools.com" // 👈 Replace with your real walkthrough video path
                   controls 
                   className="w-full h-full object-cover relative z-10"
-                >
+                  
+              
                   Your browser does not support the video tag.
                 </video>
+                */}
               </div>
             </div>
           </div>
@@ -115,8 +122,8 @@ export default function Home() {
         <div className="bg-[#1D153A] p-6 rounded-lg border border-[#31255C] hover:border-[#C084FC] hover:shadow-[0_0_25px_rgba(168,85,247,0.35)] md:col-span-2 transition-all duration-300">
           <h2 className="text-xl font-bold text-white mb-2 flex items-center gap-2">ℹ️ About This Site</h2>
           <p className="text-[#94A3B8] text-sm md:text-base leading-relaxed">
-            Thanks for stopping by! This is my personal space to share the full-stack web applications, tools, and open-source contributions I have engineered. 
-            Feel free to explore my work and view my resume using the menu above
+            This is my personal space to share the full-stack web applications, tools, and open-source contributions I have engineered. 
+            Feel free to explore my work and view my resume using the menu above.
           </p>
         </div>
         
@@ -141,12 +148,7 @@ export default function Home() {
             </li>
           </ul>
         </div>
-        <div className="bg-[#1D153A] p-6 rounded-lg border border-[#31255C] hover:border-[#C084FC] hover:shadow-[0_0_25px_rgba(168,85,247,0.35)] transition-all duration-300">
-          <h2 className="text-xl font-bold text-white mb-2 flex items-center gap-2">🏁 Next Steps</h2>
-          <p className="text-[#94A3B8] text-sm md:text-base leading-relaxed">
-            To see my development work in action, head over to the <strong>Projects</strong> tab to view live deployments and source code links. If you are looking to hire a full-stack engineer, feel free to download my resume or drop me a line via the <strong>Contact</strong> page.
-          </p>
-        </div>
+        
       </div>
       <Footer />
     </div>

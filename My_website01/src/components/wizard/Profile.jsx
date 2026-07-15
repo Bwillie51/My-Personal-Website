@@ -26,10 +26,12 @@ export default function Profile({ identity }) {
         });
         setLoading(false);
       })
+      
       .catch((err) => {
         console.error("Database initialization stream crash:", err);
         setLoading(false);
       });
+      
   }, []);
 
   if (loading) {
@@ -39,6 +41,7 @@ export default function Profile({ identity }) {
       </div>
     );
   }
+    
 
   const { experiences, skillCategories, projects } = dynamicContent;
 
@@ -52,9 +55,9 @@ export default function Profile({ identity }) {
           <p className="text-[#94A3B8] text-base">My engineering path and specialized full-stack project systems.</p>
           
           <div className="flex gap-4 mt-3 justify-center md:justify-start text-xs font-semibold text-[#C084FC]">
-            <a href="https://www.linkedin.com/in/brian-willie-8b4499206" target="_blank" rel="noreferrer" className="hover:underline">LinkedIn ↗</a>
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:underline">GitHub ↗</a>
-            <a href="mailto:your.email@example.com" className="hover:underline">Email ↗</a>
+            <a href="" target="#" rel="noreferrer" className="hover:underline">LinkedIn ↗</a>
+            <a href="#" target="_blank" rel="noreferrer" className="hover:underline">GitHub ↗</a>
+            <a href="#" className="hover:underline">Email ↗</a>
           </div>
         </div>
 
@@ -157,7 +160,7 @@ export default function Profile({ identity }) {
                     </div>
 
                     <div className="flex flex-col sm:flex-row items-center gap-2 border-t border-[#31255C] pt-4">
-                      <a href={proj.github || "https://github.com"} target="_blank" rel="noreferrer" className="w-full sm:flex-1 text-center text-xs font-bold text-[#E2E8F0] border border-[#31255C] bg-[#120E24] hover:bg-[#1D153A] py-2 rounded-md transition">
+                      <a href={proj.github || "#"} target="_blank" rel="noreferrer" className="w-full sm:flex-1 text-center text-xs font-bold text-[#E2E8F0] border border-[#31255C] bg-[#120E24] hover:bg-[#1D153A] py-2 rounded-md transition">
                         GitHub Repo
                       </a>
                       {proj.status === "In Progress" ? (

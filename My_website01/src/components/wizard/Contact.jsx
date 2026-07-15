@@ -50,14 +50,13 @@ export default function Contact() {
         {/* Left Side Channels Column */}
         <div className="space-y-4 md:col-span-1">
           <div className="bg-[#1D153A] p-5 rounded-lg border border-[#31255C] hover:border-[#C084FC] transition-colors duration-300">
-            <h3 className="text-sm font-bold text-[#A78BFA] uppercase tracking-wider mb-2">📍 Location</h3>
+            <h3 className="text-sm font-bold text-[#A78BFA] uppercase tracking-wider mb-2">📍 Address</h3>
             <p className="text-[#94A3B8] text-xs leading-relaxed">Port Moresby, Papua New Guinea</p>
+            <p className="text-[#94A3B8] text-xs leading-relaxed">P.O. Box 749</p>
+            <p className ="text-[#94A3B8] text-xs leading-relaxed">NCD 111</p>
+        
           </div>
-          <div className="bg-[#1D153A] p-5 rounded-lg border border-[#31255C] hover:border-[#C084FC] transition-colors duration-300">
-            <h3 className="text-sm font-bold text-[#A78BFA] uppercase tracking-wider mb-2">💼 Direct Channels</h3>
-            <p className="text-[#94A3B8] text-xs leading-relaxed mb-1"><strong>Email:</strong> brianwillie17@gmail.com</p>
-            <p className="text-[#94A3B8] text-xs leading-relaxed"><strong>Work Status:</strong> Open to Contracts/Employments</p>
-          </div>
+          
         </div>
 
         {/* Right Side Form Column */}

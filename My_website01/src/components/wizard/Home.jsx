@@ -123,33 +123,18 @@ export default function Home() {
           <h2 className="text-xl font-bold text-white mb-2 flex items-center gap-2">ℹ️ About This Site</h2>
           <p className="text-[#94A3B8] text-sm md:text-base leading-relaxed">
             This is my personal space to share the full-stack web applications, tools, and open-source contributions I have engineered. 
-            Feel free to explore my work and view my resume using the menu above.
+            Feel free to explore my work and explore my entire portfolio. 
+          </p>
+          <p className="text-[#94A3B8] text-sm md:text-base leading-relaxed mt-2">
+            <i><b>NOTE: This site is a work in progress, and I am continuously adding new features and improvements. Hence, all social links and othner links to view live or download CV may not work at the moment. All these were disabled for now. </b></i>
           </p>
         </div>
-        
-        <div className="bg-[#1D153A] p-6 rounded-lg border border-[#31255C] hover:border-[#C084FC] hover:shadow-[0_0_25px_rgba(168,85,247,0.35)] transition-all duration-300">
-          <h2 className="text-xl font-bold text-white mb-3 flex items-center gap-2">🚀 Core Stack</h2>
-          <ul className="space-y-2 text-[#94A3B8] text-sm md:text-base">
-            <li className="flex items-center gap-2">
-              <span className="text-[#C084FC] font-bold">✓</span> 
-              <span><strong>Frontend:</strong> HTML, JavaScript, React, Tailwind CSS</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="text-[#C084FC] font-bold">✓</span> 
-              <span><strong>Backend:</strong> Node.js, Java, PHP, Python</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="text-[#C084FC] font-bold">✓</span> 
-              <span><strong>Databases:</strong> MariaDB, PostgreSQL, MongoDB</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="text-[#C084FC] font-bold">✓</span> 
-              <span><strong>DevOps:</strong> Git, Docker, Cloud Hosting</span>
-            </li>
-          </ul>
-        </div>
-        
       </div>
+        
+        
+        
+        
+      
       <Footer />
     </div>
 

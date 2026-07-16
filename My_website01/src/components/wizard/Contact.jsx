@@ -1,32 +1,53 @@
 // src/components/wizard/Contact.jsx
-import { useState } from 'react';
+import { useState, useRef } from 'react'; // 👈 Added useRef
+import ReCAPTCHA from 'react-google-recaptcha'; // 👈 Added ReCAPTCHA import
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState({ loading: false, success: false, error: null });
+  const [captchaToken, setCaptchaToken] = useState(null); // 👈 Added state to store token
+  const recaptchaRef = useRef(null); // 👈 Added ref to reset widget later
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleCaptchaChange = (token) => {
+    setCaptchaToken(token); // Stores the validation token when checked
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // 🛑 Block submission if they haven't solved the captcha
+    if (!captchaToken) {
+      setStatus({ loading: false, success: false, error: "Please verify that you are not a robot." });
+      return;
+    }
+
     setStatus({ loading: true, success: false, error: null });
 
-    // ⚠️ REPLACE 'your_form_id' WITH YOUR ACTUAL FORMSPREE ID KEY FROM YOUR DASHBOARD
     const FORMSPREE_ENDPOINT = "https://formspree.io/f/mojoezbn";
+
+    // 📦 Include the g-recaptcha-response token inside your form payload
+    const payload = {
+      ...formData,
+      "g-recaptcha-response": captchaToken
+    };
 
     try {
       const response = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload), // 👈 Sending payload instead of formData
       });
 
       if (response.ok) {
         setStatus({ loading: false, success: true, error: null });
         setFormData({ name: '', email: '', message: '' });
+        setCaptchaToken(null); // Clear token
+        recaptchaRef.current.reset(); // 🤖 Reset visual reCAPTCHA widget
       } else {
         const data = await response.json();
         throw new Error(data.error || "Failed to deliver message.");
@@ -54,9 +75,7 @@ export default function Contact() {
             <p className="text-[#94A3B8] text-xs leading-relaxed">Port Moresby, Papua New Guinea</p>
             <p className="text-[#94A3B8] text-xs leading-relaxed">P.O. Box 749</p>
             <p className ="text-[#94A3B8] text-xs leading-relaxed">NCD 111</p>
-        
           </div>
-          
         </div>
 
         {/* Right Side Form Column */}
@@ -113,15 +132,23 @@ export default function Contact() {
               𐄂 {status.error}
             </div>
           )}
-          {/* Rechapter - Robot Security Test points API */}
 
+          {/* 🤖 Rechapter - Robot Security Test points API */}
+          <div className="flex justify-start my-2 overflow-hidden rounded">
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey="6LfTLVYtAAAAAPqhbUvMy0HgUsQDwbtkwfcTHJAI" // 👈 Insert your v2 Checkbox Site Key here
+              onChange={handleCaptchaChange}
+              theme="dark" // 👈 Matches your template's dark aesthetics
+            />
+          </div>
 
           <button 
             type="submit" 
-            disabled={status.loading}
+            disabled={status.loading || !captchaToken} // 👈 Keeps button disabled until checked
             className={`w-full text-white py-3 rounded-md font-bold text-xs uppercase tracking-wider transition-all duration-300 flex justify-center items-center gap-2 ${
-              status.loading 
-                ? 'bg-[#4c1d95] cursor-not-allowed text-[#94A3B8]' 
+              status.loading || !captchaToken
+                ? 'bg-[#4c1d95] cursor-not-allowed text-[#94A3B8] opacity-60' 
                 : 'bg-[#6D28D9] hover:bg-[#7C3AED] shadow-[0_0_15px_rgba(109,40,217,0.4)] active:scale-98'
             }`}
           >

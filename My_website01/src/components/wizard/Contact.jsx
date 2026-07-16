@@ -35,7 +35,28 @@ export default function Contact() {
       ...formData,
       "g-recaptcha-response": captchaToken
     };
+        // Add this check inside your handleSubmit function
+    const userEmail = formData.email.toLowerCase();
 
+    // 1. Block common garbage strings or testing domains
+    if (userEmail.includes("example.com") || userEmail.includes("test.com") || userEmail.includes("fake.com")) {
+      setStatus({ loading: false, success: false, error: "Please provide a valid, active email address." });
+      return;
+    }
+
+        // 2. Strict syntax verification regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(userEmail)) {
+          setStatus({ loading: false, success: false, error: "Invalid email format detected." });
+          return;
+        }
+        const blockedDomains = ["mailinator.com", "yopmail.com", "10minutemail.com", "trashmail.com"];
+    const domain = userEmail.split("@")[1];
+
+    if (blockedDomains.includes(domain)) {
+      setStatus({ loading: false, success: false, error: "Disposable email addresses are not allowed." });
+      return;
+    }
     try {
       const response = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",

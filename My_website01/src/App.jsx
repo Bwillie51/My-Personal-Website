@@ -2,6 +2,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { client } from './sanity/client'; 
+import { Analytics } from "@vercel/analytics/next"
 
 import Header from './components/Header';
 import Home from './components/wizard/Home';
@@ -73,7 +74,10 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
+      <Analytics />
     </BrowserRouter>
+    
+
   );
 }
-
+  
